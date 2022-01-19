@@ -2,9 +2,9 @@
 
 import groovy.json.JsonSlurperClassic
 
-def SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 
-node {
+
+pipeline {
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     def SF_USERNAME=env.SF_USERNAME
     def SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
@@ -15,6 +15,10 @@ node {
     def WORKSPACE = env.WORKSPACE
 
     def toolbelt = tool 'toolbelt'
+
+    environment {
+        SFDX_USE_GENERIC_UNIX_KEYCHAIN = true
+    }
 
 
     // -------------------------------------------------------------------------
