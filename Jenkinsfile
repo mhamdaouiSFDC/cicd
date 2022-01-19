@@ -14,6 +14,12 @@ node {
 
     def toolbelt = tool 'toolbelt'
 
+    environment {
+        // Removed other variables for clarity...
+        SFDX_USE_GENERIC_UNIX_KEYCHAIN = true
+        // ...
+    }
+
 
     // -------------------------------------------------------------------------
     // Check out code from source control.
@@ -38,7 +44,6 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Authorize DevHub') {
-                command "security -v unlock-keychain -p \"$KEYCHAIN_PASSWORD\" \"$HOME/Library/Keychains/login.keychain\""
                 rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile \"${server_key_file}\" --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
                     error 'Salesforce dev hub org authorization failed.'
