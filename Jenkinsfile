@@ -2,6 +2,8 @@
 
 import groovy.json.JsonSlurperClassic
 
+def SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
+
 node {
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     def SF_USERNAME=env.SF_USERNAME
@@ -11,7 +13,7 @@ node {
     def PACKAGE_VERSION
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
     def WORKSPACE = env.WORKSPACE
-    def SFDX_USE_GENERIC_UNIX_KEYCHAIN = true
+    def SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 
     def toolbelt = tool 'toolbelt'
 
