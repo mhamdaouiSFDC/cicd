@@ -13,7 +13,6 @@ node {
     def PACKAGE_VERSION
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
     def WORKSPACE = env.WORKSPACE
-    def SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 
     def toolbelt = tool 'toolbelt'
 
