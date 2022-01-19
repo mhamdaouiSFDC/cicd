@@ -1,7 +1,7 @@
 @isTest
 public with sharing class AccountTriggerTest {
     @isTest
-    private void testAccountCreation() {
+    private static void testAccountCreation() {
         Account a = new Account(Name = 'Test');
 
         Test.startTest();
