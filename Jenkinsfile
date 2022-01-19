@@ -28,9 +28,7 @@ node {
     // Run all the enclosed stages with access to the Salesforce
     // JWT key credentials.
     // -------------------------------------------------------------------------
-    
-    withEnv(["HOME=${WORKSPACE}"]) {
-        
+            
         withCredentials([file(credentialsId: SERVER_KEY_CREDENTALS_ID, variable: 'server_key_file')]) {
 
             // -------------------------------------------------------------------------
@@ -38,7 +36,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Authorize DevHub') {
-                rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile /Users/mhamdouai/Desktop/CICD/Secrets/server.key --setdefaultdevhubusername --setalias HubOrg"
+                rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
                     error 'Salesforce dev hub org authorization failed.'
                 }
@@ -190,7 +188,6 @@ node {
                 }
             }
         }
-    }
 }
 
 def command(script) {
