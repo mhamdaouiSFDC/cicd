@@ -1,11 +1,10 @@
 {
   "packageDirectories": [
-    {
-      "path": "force-app",
-      "default": true
-    }
+      {
+          "path": "force-app",
+          "default": true
+      }
   ],
-  "name": "project-ci-cd",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "52.0"
